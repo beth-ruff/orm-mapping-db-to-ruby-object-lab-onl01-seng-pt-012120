@@ -65,7 +65,8 @@ class Student
     LIMIT ?
     SQL
     
-    DB[:conn].execute(sql, x)
+    DB[:conn].execute(sql, x)map do |row|
+    self.new_from_db(row)
   end 
   
   def save
